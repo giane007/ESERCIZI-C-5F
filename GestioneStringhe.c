@@ -16,39 +16,39 @@ Inserita una 2° stringa determinare:
 #include <string.h>
 
 // Funzione per controllare se un carattere è una lettera 
-int is_letter(char c) {
+int Elettera(char c) {
     return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
 }
 
-// Funzione per convertire carattere in minuscolo 
-char to_lower(char c) {
+// Funzione per convertire carattere in minuscolo
+char minuscola(char c) {
     if (c >= 'A' && c <= 'Z')
         return c + ('a' - 'A');
     return c;
 }
 
 // Funzione per verificare se un carattere è una vocale
-int is_vowel(char c) {
-    c = to_lower(c);
+int maiuscola(char c) {
+    c = minuscola(c);
     return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }
 
 // Funzione per contare le vocali in una stringa
-int count_vowels(char str[]) {
-    int count = 0;
+int conta_vocali(char str[]) {
+    int conta = 0;
     for (int i = 0; str[i]; i++)
-        if (is_letter(str[i]) && is_vowel(str[i]))
-            count++;
-    return count;
+        if (Elettera(str[i]) && maiuscola(str[i]))
+            conta++;
+    return conta;
 }
 
 // Funzione per contare le consonanti in una stringa
-int count_consonants(char str[]) {
-    int count = 0;
+int conta_consonanti(char str[]) {
+    int conta = 0;
     for (int i = 0; str[i]; i++)
-        if (is_letter(str[i]) && !is_vowel(str[i]))
-            count++;
-    return count;
+        if (Elettera(str[i]) && !maiuscola(str[i]))
+            conta++;
+    return conta;
 }
 
 int main() {
@@ -61,11 +61,10 @@ int main() {
     // Input prima stringa
     printf("Inserisci la prima stringa (max 200 caratteri): ");
     fgets(str1, 201, stdin);
-    str1[strcspn(str1, "\n")] = 0;  // Rimuove il newline
 
     // Verifica che contenga solo lettere
     for (i = 0; str1[i]; i++) {
-        if (!is_letter(str1[i])) {
+        if (!Elettera(str1[i])) {
             solo_lettere = 0;
             break;
         }
@@ -83,12 +82,12 @@ int main() {
     scanf(" %c", &lettera);
     getchar(); // Consuma il newline rimasto
 
-    int count = 0;
+    int conta = 0;
     for (i = 0; str1[i]; i++) {
-        if (to_lower(str1[i]) == to_lower(lettera))
-            count++;
+        if (minuscola(str1[i]) == minuscola(lettera))
+            conta++;
     }
-    printf("La lettera '%c' compare %d volte.\n", lettera, count);
+    printf("La lettera '%c' compare %d volte.\n", lettera, conta);
 
     // Stringhe di posizione pari e dispari
     int p = 0, d = 0;
@@ -105,14 +104,14 @@ int main() {
     printf("Lettere in posizione dispari: %s\n", dispari);
 
     // Verifica se contiene doppie
-    int has_double = 0;
+    int ha_doppie = 0;
     for (i = 0; str1[i+1]; i++) {
-        if (to_lower(str1[i]) == to_lower(str1[i+1])) {
-            has_double = 1;
+        if (minuscola(str1[i]) == minuscola(str1[i+1])) {
+            ha_doppie = 1;
             break;
         }
     }
-    if (has_double)
+    if (ha_doppie)
         printf("La stringa contiene doppie.\n");
     else
         printf("La stringa NON contiene doppie.\n");
@@ -136,11 +135,11 @@ int main() {
     // Trova lettere comuni
     int comuni[26] = {0};
     for (i = 0; str1[i]; i++) {
-        char c1 = to_lower(str1[i]);
-        if (is_letter(c1)) {
+        char c1 = minuscola(str1[i]);
+        if (Elettera(c1)) {
             for (int j = 0; str2[j]; j++) {
-                char c2 = to_lower(str2[j]);
-                if (is_letter(c2) && c1 == c2) {
+                char c2 = minuscola(str2[j]);
+                if (Elettera(c2) && c1 == c2) {
                     comuni[c1 - 'a'] = 1;
                     break;
                 }
@@ -161,10 +160,10 @@ int main() {
     printf("\n");
 
     // Conteggio vocali e consonanti
-    int vocali1 = count_vowels(str1);
-    int vocali2 = count_vowels(str2);
-    int cons1 = count_consonants(str1);
-    int cons2 = count_consonants(str2);
+    int vocali1 = conta_vocali(str1);
+    int vocali2 = conta_vocali(str2);
+    int cons1 = conta_consonanti(str1);
+    int cons2 = conta_consonanti(str2);
 
     if (vocali1 > vocali2)
         printf("La prima stringa ha più vocali (%d).\n", vocali1);
