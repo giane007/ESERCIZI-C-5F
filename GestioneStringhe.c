@@ -15,12 +15,12 @@ Inserita una 2° stringa determinare:
 #include <stdio.h>
 #include <string.h>
 
-// Funzione per controllare se un carattere è una lettera (senza isalpha)
+// Funzione per controllare se un carattere è una lettera 
 int is_letter(char c) {
     return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
 }
 
-// Funzione per convertire carattere in minuscolo (senza tolower)
+// Funzione per convertire carattere in minuscolo 
 char to_lower(char c) {
     if (c >= 'A' && c <= 'Z')
         return c + ('a' - 'A');
