@@ -28,7 +28,7 @@ char minuscola(char c) {
 }
 
 // Funzione per verificare se un carattere è una vocale
-int maiuscola(char c) {
+int e_vocale(char c) {
     c = minuscola(c);
     return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }
@@ -51,6 +51,8 @@ int conta_consonanti(char str[]) {
     return conta;
 }
 
+// ... [funzioni di supporto aggiornate con e_vocale] ...
+
 int main() {
     char str1[201], str2[201];
     char pari[201], dispari[201];
@@ -70,26 +72,26 @@ int main() {
         }
     }
 
-    if (solo_lettere)
-        printf("La stringa contiene solo lettere.\n");
-    else {
+    if (!solo_lettere) {
         printf("La stringa contiene caratteri non alfabetici. Fine programma.\n");
         return 1;
     }
 
-    // Conteggio di una lettera scelta dall'utente
+    printf("La stringa contiene solo lettere.\n");
+
+    // Conteggio di una lettera
     printf("Inserisci la lettera da contare: ");
     scanf(" %c", &lettera);
-    getchar(); // Consuma il newline rimasto
+    getchar();  // elimina newline rimasto
 
     int conta = 0;
-    for (i = 0; str1[i]; i++) {
+    for (i = 0; str1[i]; i++)
         if (minuscola(str1[i]) == minuscola(lettera))
             conta++;
-    }
+
     printf("La lettera '%c' compare %d volte.\n", lettera, conta);
 
-    // Stringhe di posizione pari e dispari
+    // Pari / dispari
     int p = 0, d = 0;
     for (i = 0; str1[i]; i++) {
         if (i % 2 == 0)
@@ -103,28 +105,28 @@ int main() {
     printf("Lettere in posizione pari: %s\n", pari);
     printf("Lettere in posizione dispari: %s\n", dispari);
 
-    // Verifica se contiene doppie
+    // Doppie
     int ha_doppie = 0;
-    for (i = 0; str1[i+1]; i++) {
-        if (minuscola(str1[i]) == minuscola(str1[i+1])) {
+    for (i = 0; str1[i + 1]; i++) {
+        if (minuscola(str1[i]) == minuscola(str1[i + 1])) {
             ha_doppie = 1;
             break;
         }
     }
+
     if (ha_doppie)
         printf("La stringa contiene doppie.\n");
     else
         printf("La stringa NON contiene doppie.\n");
 
-    // Input seconda stringa
+    // Seconda stringa
     printf("Inserisci la seconda stringa (max 200 caratteri): ");
     fgets(str2, 201, stdin);
-    str2[strcspn(str2, "\n")] = 0;  // Rimuove il newline
+    str2[strcspn(str2, "\n")] = 0;
 
     len1 = strlen(str1);
     len2 = strlen(str2);
 
-    // Confronta le lunghezze
     if (len1 > len2)
         printf("La prima stringa è più lunga.\n");
     else if (len2 > len1)
@@ -132,7 +134,7 @@ int main() {
     else
         printf("Le due stringhe hanno la stessa lunghezza.\n");
 
-    // Trova lettere comuni
+    // Lettere comuni
     int comuni[26] = {0};
     for (i = 0; str1[i]; i++) {
         char c1 = minuscola(str1[i]);
@@ -159,7 +161,7 @@ int main() {
         printf("Nessuna");
     printf("\n");
 
-    // Conteggio vocali e consonanti
+    // Vocali / Consonanti
     int vocali1 = conta_vocali(str1);
     int vocali2 = conta_vocali(str2);
     int cons1 = conta_consonanti(str1);
@@ -181,3 +183,4 @@ int main() {
 
     return 0;
 }
+
