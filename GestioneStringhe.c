@@ -151,14 +151,14 @@ int main() {
     }
 
     printf("Lettere comuni: ");
-    int found = 0;
+    int trovato = 0;
     for (i = 0; i < 26; i++) {
         if (comuni[i]) {
             printf("%c ", i + 'a');
-            found = 1;
+            trovato = 1;
         }
     }
-    if (!found)
+    if (!trovato)
         printf("Nessuna");
     printf("\n");
 
