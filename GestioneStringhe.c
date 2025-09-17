@@ -1,19 +1,7 @@
-/*
-Scrivere un programma in C che dopo aver inserito una stringa a piacere determini e o verifichi:
-1) Che contenga solo lettere;
-2) Il conteggio di una lettera (se presente) scelta dall’utente;
-3) Crei 2 ulteriori stringhe che contengano 1 le lettere di posizione pari; la 2° le lettere di posizione
-dispari;
-4) Verifichi se contiene doppie.
-Inserita una 2° stringa determinare:
-1) Quale delle 2 è più lunga e più corta;
-2) Quali sono le lettere contenute in ambedue le stringhe;
-3) Quale delle 2 stringhe contiene più vocali;
-4) Quale delle 2 stringhe contiene più consonanti;
-*/
-
 #include <stdio.h>
 #include <string.h>
+
+#define dim 200
 
 // Funzione per controllare se un carattere è una lettera 
 int Elettera(char c) {
@@ -37,7 +25,7 @@ int e_vocale(char c) {
 int conta_vocali(char str[]) {
     int conta = 0;
     for (int i = 0; str[i]; i++)
-        if (Elettera(str[i]) && maiuscola(str[i]))
+        if (Elettera(str[i]) && e_vocale(str[i]))
             conta++;
     return conta;
 }
@@ -46,23 +34,29 @@ int conta_vocali(char str[]) {
 int conta_consonanti(char str[]) {
     int conta = 0;
     for (int i = 0; str[i]; i++)
-        if (Elettera(str[i]) && !maiuscola(str[i]))
+        if (Elettera(str[i]) && !e_vocale(str[i]))
             conta++;
     return conta;
 }
 
-// ... [funzioni di supporto aggiornate con e_vocale] ...
-
 int main() {
-    char str1[201], str2[201];
-    char pari[201], dispari[201];
+    char str1[dim], str2[dim];
+    char pari[dim], dispari[dim];
     char lettera;
     int i, len1, len2;
     int solo_lettere = 1;
 
     // Input prima stringa
-    printf("Inserisci la prima stringa (max 200 caratteri): ");
-    fgets(str1, 201, stdin);
+    printf("Inserisci la prima stringa: ");
+    fgets(str1, dim, stdin);
+
+    // Rimuove newline manualmente
+    for (i = 0; str1[i] != '\0'; i++) {
+        if (str1[i] == '\n') {
+            str1[i] = '\0';
+            break;
+        }
+    }
 
     // Verifica che contenga solo lettere
     for (i = 0; str1[i]; i++) {
@@ -82,7 +76,7 @@ int main() {
     // Conteggio di una lettera
     printf("Inserisci la lettera da contare: ");
     scanf(" %c", &lettera);
-    getchar();  // elimina newline rimasto
+    getchar();  // elimina newline rimasto nel buffer
 
     int conta = 0;
     for (i = 0; str1[i]; i++)
@@ -120,9 +114,16 @@ int main() {
         printf("La stringa NON contiene doppie.\n");
 
     // Seconda stringa
-    printf("Inserisci la seconda stringa (max 200 caratteri): ");
-    fgets(str2, 201, stdin);
-    str2[strcspn(str2, "\n")] = 0;
+    printf("Inserisci la seconda stringa: ");
+    fgets(str2, dim, stdin);
+
+    // Rimuove newline manualmente
+    for (i = 0; str2[i] != '\0'; i++) {
+        if (str2[i] == '\n') {
+            str2[i] = '\0';
+            break;
+        }
+    }
 
     len1 = strlen(str1);
     len2 = strlen(str2);
@@ -183,4 +184,3 @@ int main() {
 
     return 0;
 }
-
