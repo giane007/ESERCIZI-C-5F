@@ -96,7 +96,7 @@ int main(){
     
     struct Studente studenti [50];
 
-   
+    int nStudenti = 0;
     
     int uscita = 0;
     
@@ -112,7 +112,6 @@ int main(){
             switch (scelta){
 
                 case 1: 
-                    int nStudenti;
                     printf("\n Numero studenti da inserire ");
                     scanf("%d", &nStudenti);
                     inserisci(studenti,nStudenti);
@@ -156,5 +155,6 @@ int main(){
     }while(uscita==0);
 
 }
+
 
 
