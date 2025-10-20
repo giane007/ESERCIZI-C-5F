@@ -77,7 +77,7 @@ int mediaMin(struct Studente S[], int nStudenti){
     return indice;
 }
 
-void ordinaAnnoMAtricolazione(struct Studente S[], int nStudenti,){ //Bubble sort
+void ordinaAnnoMAtricolazione(struct Studente S[], int nStudenti){ //Bubble sort
     for(int i = 0 ; i < nStudenti -1; i++){
         for(int j = i+1 ; j < nStudenti ; j++){
             if(S[i].anno_immatricolazione > S[j].anno_immatricolazione){
@@ -156,4 +156,5 @@ int main(){
     }while(uscita==0);
 
 }
+
 
