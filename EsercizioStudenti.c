@@ -101,7 +101,7 @@ int main(){
     int uscita = 0;
     
     do{
-        printf("\n 1 Inserimento \n 2 Visualizza \n 3 media MAX e media MIN \n 4 Ordina anno di matricolazione \n 5 Ricerca numero di matricola \n 6 Visualizza per media minima \n 7 Media generale \n 8 Immatricolazioni \n");
+        printf("\n 1 Inserimento \n 2 Visualizza \n 3 media MAX e media MIN \n 4 Ordina anno di matricolazione \n 5 Ricerca numero di matricola \n 6 Visualizza per media minima \n 7 Media generale \n 8 Immatricolazioni \n 9 Uscita \n");
 
 
             
@@ -159,6 +159,7 @@ int main(){
     }while(uscita==0);
 
 }
+
 
 
 
