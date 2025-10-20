@@ -147,6 +147,10 @@ int main(){
                 break;
 
                 case 8:
+                    
+                break;
+
+                case 9:
                     uscita = 1;
                 break;
             }
@@ -155,6 +159,7 @@ int main(){
     }while(uscita==0);
 
 }
+
 
 
 
