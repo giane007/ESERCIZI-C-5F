@@ -1,3 +1,4 @@
+//@author Riccardo Gianesella 
 /*
 Obiettivo: Scrivere un programma in linguaggio C che gestisca un archivio di studenti.
 
@@ -49,6 +50,9 @@ struct Studente{
     char citta_residenza[50];
 };
 
+//@brief Inserimento dei dati
+//@param S struct degli studenti
+//@param nStudenti numero degli studenti
 void inserisci(struct Studente S[], int nStudenti){
     for(int i = 0; i < nStudenti; i++){
         printf("\n Inserisci studente %d", i+1);
@@ -75,7 +79,10 @@ void inserisci(struct Studente S[], int nStudenti){
         scanf("%s", S[i].citta_residenza);
     }
 }
-    
+
+//@brief Visualizzazione dei dati
+//@param S struct degli studenti
+//@param nStudenti numero degli studenti
 void visualizza(struct Studente S[], int nStudenti){
     for(int i=0;i<nStudenti;i++){
         printf("\n Studente %d", i+1);
@@ -89,6 +96,9 @@ void visualizza(struct Studente S[], int nStudenti){
     }
 }
 
+//@brief Visualizzazione di dati di uno studente
+//@param S struct degli studenti
+//@param indice posizione dello studente
 void visualizzaUna(struct Studente S[], int indice){
     
         printf("\n Nome : %s", S[indice].nome);
@@ -101,6 +111,10 @@ void visualizzaUna(struct Studente S[], int indice){
     
 }
 
+
+//@brief mediaMax media più alta degli studenti
+//@param S struct degli studenti
+//@param nStudenti numero degli studenti
 int mediaMax(struct Studente S[], int nStudenti){
     
     int indice = 0;
@@ -114,6 +128,9 @@ int mediaMax(struct Studente S[], int nStudenti){
     return indice;
 }
 
+//@brief mediaMin media più alta degli studenti
+//@param S struct degli studenti
+//@param nStudenti numero degli studenti
 int mediaMin(struct Studente S[], int nStudenti){
     
     int indice = 0;
@@ -127,6 +144,10 @@ int mediaMin(struct Studente S[], int nStudenti){
     return indice;
 }
 
+
+//@brief ordinaAnnoMatricolazione ornina in ordine crescente per anno di matricolazione
+//@param S struct degli studenti
+//@param nStudenti numero degli studenti
 void ordinaAnnoMatricolazione(struct Studente S[], int nStudenti){ //Bubble sort
     for(int i = 0 ; i < nStudenti -1; i++){
         for(int j = i+1 ; j < nStudenti ; j++){
@@ -140,6 +161,10 @@ void ordinaAnnoMatricolazione(struct Studente S[], int nStudenti){ //Bubble sort
     }
 }
 
+//@brief ricercaNumeroMatricola cerca lo studente con il numero della matricola scelto dall'utente
+//@param S struct degli studenti
+//@param nStudenti numero degli studenti
+//@param matricola numero che ha inserito l'utente
 void ricercaNumeroMatricola(struct Studente S[], int nStudenti, char matricola[]) {
     int trovato = 0;
     for(int i=0; i< nStudenti; i++) {
@@ -153,6 +178,10 @@ void ricercaNumeroMatricola(struct Studente S[], int nStudenti, char matricola[]
     }
 }
 
+//@brief visualizzaMediaMinima fa vedere tutti gli studenti con una media più alta di quella scelta dall'utente
+//@param S struct degli studenti
+//@param nStudenti numero degli studenti
+//@media media minima inserita dall'utente
 void visualizzaMediaMinima(struct Studente S[], int nStudenti,float media){
     for(int i = 0 ; i < nStudenti ; i++){
         if(S[i].media_voti >= media){
@@ -160,7 +189,9 @@ void visualizzaMediaMinima(struct Studente S[], int nStudenti,float media){
         }
     }
 }
-
+//@brief mediaGenerale trova la media di tutte le medie degli studenti
+//@param S struct degli studenti
+//@param nStudenti numero degli studenti
 float mediaGenerale(struct Studente S[], int nStudenti){
     int somma = 0;
     float media = 0;
@@ -172,7 +203,10 @@ float mediaGenerale(struct Studente S[], int nStudenti){
     
     return media;
 }
-
+//@brief ricercaAnnoMatricola cerca lo studente con l'anno della matricola uguale a quello inserito dall'utente
+//@param S struct degli studenti
+//@param nStudenti numero degli studenti
+//@param anno anno inserito dall'utente
 void ricercaAnnoMatricola(struct Studente S[], int nStudenti, int anno){
     for(int i=0; i< nStudenti; i++){
         if(S[i].anno_immatricolazione == anno){
@@ -217,9 +251,6 @@ int main(){
                     
                     printf("\n Media piu alta: %.2f",studenti[indiceMax].media_voti);
                     printf("\n Media piu bassa: %.2f",studenti[indiceMin].media_voti);
-                
-                    //printf("\n Media max: %d",mediaMax(studenti,nStudenti));
-                    //printf("\n Media min: %d",mediaMin(studenti,nStudenti));
                 break;
                 }
                 
