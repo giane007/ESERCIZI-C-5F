@@ -115,6 +115,7 @@ void visualizzaUna(struct Studente S[], int indice){
 //@brief mediaMax media più alta degli studenti
 //@param S struct degli studenti
 //@param nStudenti numero degli studenti
+//@return Indice dello studente con la media voti massima.
 int mediaMax(struct Studente S[], int nStudenti){
     
     int indice = 0;
@@ -128,9 +129,10 @@ int mediaMax(struct Studente S[], int nStudenti){
     return indice;
 }
 
-//@brief mediaMin media più alta degli studenti
+//@brief mediaMin media più bassa degli studenti
 //@param S struct degli studenti
 //@param nStudenti numero degli studenti
+//@return Indice dello studente con la media voti minima.
 int mediaMin(struct Studente S[], int nStudenti){
     
     int indice = 0;
@@ -192,6 +194,7 @@ void visualizzaMediaMinima(struct Studente S[], int nStudenti,float media){
 //@brief mediaGenerale trova la media di tutte le medie degli studenti
 //@param S struct degli studenti
 //@param nStudenti numero degli studenti
+//@return La media aritmetica delle medie voti.
 float mediaGenerale(struct Studente S[], int nStudenti){
     int somma = 0;
     float media = 0;
